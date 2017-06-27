@@ -52,10 +52,15 @@ var allOptions = [bag, banana, boots, breakfast, bubblegum, chair, cthulhu, dogD
 function randomizedOption(image) {
 for (var i = 0; i < 3; i++) {
     return Math.floor(Math.random() * allOptions.length)
+    if
   };
 };
 
 console.log(randomizedOption());
+
+var firstImage = [];
+var secondImage = [];
+var thirdImage = [];
 
 //write a new function that uses this function above to push 3 images into an array
 

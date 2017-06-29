@@ -50,13 +50,15 @@ var allOptions = [bag, banana, boots, breakfast, bubblegum, chair, cthulhu, dogD
 
 //below is a function that returns a random number which should correspond to the images in my array
 function randomizedOption(image) {
+  var numbers = [];
 for (var i = 0; i < 3; i++) {
-    return Math.floor(Math.random() * allOptions.length)
-    if
-  };
-};
+    var randomNumber = Math.floor(Math.random() * allOptions.length)
+    numbers.push(randomNumber);
+}
+return numbers;
+}
 
-console.log(randomizedOption());
+  console.log(randomizedOption());
 
 var firstImage = [];
 var secondImage = [];

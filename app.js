@@ -1,9 +1,9 @@
 'use strict';
 
 //these are meant to represent the three images that will show for each round
-var firstImageEl = document.getElementsByClassName('first-image')[0];
-var secondImageEl = document.getElementsByClassName('second-image')[0];
-var thirdImageEl = document.getElementsByClassName('third-image')[0];
+var firstImageEl = document.getElementById('first-image');
+var secondImageEl = document.getElementById('second-image');
+var thirdImageEl = document.getElementById('third-image');
 
 //here is my constructor function for each option
 function Image(name, path) {
@@ -11,6 +11,7 @@ function Image(name, path) {
   this.path = path;
   this.shown = 0;
   this.clicked = 0;
+  this.helpfulId = '';
 }
 
 //something to think about for later
@@ -48,23 +49,39 @@ var allOptions = [bag, banana, boots, breakfast, bubblegum, chair, cthulhu, dogD
 //
 // var myRandomElement = myArray.randomizedOption();
 
+
+var randomImages = [];
+
 //below is a function that returns a random number which should correspond to the images in my array
-function randomizedOption(image) {
-  var numbers = [];
-for (var i = 0; i < 3; i++) {
-    var randomNumber = Math.floor(Math.random() * allOptions.length)
-    numbers.push(randomNumber);
+function randomizedOption() {
+  //var numbers = [];
+  while (randomImages.length < 3) {
+      var randomNumber = Math.floor(Math.random() * allOptions.length)
+      if (!randomImages.includes(allOptions[randomNumber])) {
+        randomImages.push(allOptions[randomNumber]);
+      }
+  }
 }
-return numbers;
+
+function displayRandomImages() {
+firstImageEl.src = randomImages[0].path;
+secondImageEl.src = randomImages[1].path;
+thirdImageEl.src = randomImages[2].path;
 }
 
-  console.log(randomizedOption());
+//write a for loop that calls both functions (the randomizedOption() and displayRandomImages())
 
-var firstImage = [];
-var secondImage = [];
-var thirdImage = [];
+var rounds = 0;
 
-//write a new function that uses this function above to push 3 images into an array
+while (rounds < 25) {
+  randomizedOption();
+  displayRandomImages();
+  rounds++;
+  //clicked++
+}
+
+
+
 
 //show random options
 

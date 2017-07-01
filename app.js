@@ -72,21 +72,43 @@ thirdImageEl.src = randomImages[2].path;
 //write a for loop that calls both functions (the randomizedOption() and displayRandomImages())
 
 var rounds = 0;
+var clicked = 0;
 
-while (rounds < 25) {
-  randomizedOption();
-  displayRandomImages();
-  rounds++;
-  //clicked++
-}
+// while (rounds < 25) {
+//   randomizedOption();
+//   displayRandomImages();
+//   rounds++;
+//   //clicked++
+// }
+
+//use event listener to respond each time the user clicks or chooses an option and store the number of clicks as well as percentage of clicks - it will modify what is already in the constructor function
+var formEl = document.getElementsByClassName('form')[0];
+
+formEl.addEventListener('click', handleClicked);
+
+function handleClicked(event) {
+
+  // while (rounds < 25) {
+    event.preventDefault();
+    var itemName = event.target;
+    // randomizedOption();
+    // displayRandomImages();
+    // rounds++;
+    // clicked++;
+    // //clicked++
 
 
+ console.log(itemName);
+  }
+// }
+
+handleClicked(event);
 
 
 //show random options
 
 //test for duplicates (this can be perfected later)
-//use event listener to respond each time the user clicks or chooses an option and store the number of clicks as well as percentage of clicks - it will modify what is already in the constructor function
+
 
 //after an option is chosen, erase everything and run the random function again
 

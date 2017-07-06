@@ -1,4 +1,7 @@
 'use strict';
+var context = document.getElementById('my-chart').getContext('2d');
+
+var dataSet;
 
 var chartColors = ['black', 'purple', 'brown', 'green', 'blue', 'red'];
 
@@ -18,12 +21,11 @@ function Image(name, path) {
   allOptions.push(this);
 }
 
-//something to think about for later
-// var images = [
-//   new Image(),
-//   new Image(),
-// ];
-
+//if/else statement for local storage
+if (localStorage.date) {
+  allOptions = JSON.parse(localStorage.data);
+} else {
+//these instances of the image constructor are now a part of the else statement
 var bag = new Image('bag', './assets/bag.jpg');
 var banana = new Image('banana', './assets/banana.jpg');
 var bathroom = new Image('bathroom', './assets/bathroom.jpg');
@@ -44,8 +46,7 @@ var unicorn = new Image('unicorn', './assets/unicorn.jpg');
 var usb = new Image('usb', './assets/usb.gif');
 var waterCan = new Image('water-can', './assets/water-can.jpg');
 var wineGlass = new Image('wine-glass', './assets/wine-glass.jpg');
-
-
+}
 
 //then google a random function to pick stuff out of an array
 // Array.prototype.randomizedOption = function() {
@@ -152,7 +153,7 @@ function getVoteTotals() {
   displayChoices();
 }
 
-var context = document.getElementById('my-chart').getContext('2d');
+getVoteTotals();
 
 function displayChoices() {
   for (var i = 0; i < allOptions.length; i++) {
@@ -187,6 +188,13 @@ function displayChoices() {
     },
   },
 });
+}
+
+saveDataToLocalStorage(dataset);
+
+function saveDataToLocalStorage(stats) {
+  var dataString = JSON.stringify(stats);
+  localStorage.clicked = dataString;
 }
   // alert('Here are your choices.');
   //
